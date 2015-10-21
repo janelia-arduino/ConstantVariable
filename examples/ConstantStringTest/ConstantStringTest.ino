@@ -23,6 +23,7 @@ CONSTANT_STRING(big_string,
                 "gurgling face that blessed him, equine in its length, and at the light\n"
                 "untonsured hair, grained and hued like pale oak.\n");
 CONSTANT_STRING(little_string,"12345");
+CONSTANT_STRING(empty_string,"");
 
 void setup()
 {
@@ -53,6 +54,23 @@ void loop()
   Serial << "little_string.length() = " << little_string.length() << endl;
   char little_char_array[little_string.length()];
   little_string.copy(little_char_array,little_string.length()+1);
-  // little_string.copy(little_char_array);
   Serial << little_char_array << endl;
+  char little_char_array2[little_string.length()];
+  little_string.copy(little_char_array2);
+  Serial << little_char_array2 << endl;
+  for (int offset=0;offset<=little_string.length()+2;++offset)
+  {
+    little_string.copy(little_char_array2,little_string.length()-1,offset);
+    Serial << little_char_array2 << endl;
+  }
+
+  Serial << endl;
+  Serial << "empty_string.length() = " << empty_string.length() << endl;
+  char empty_char_array[little_string.length()];
+  empty_string.copy(empty_char_array);
+  Serial << empty_char_array << endl;
+  if (strcmp(empty_char_array,"") == 0)
+  {
+    Serial << "empty_char_array == to \"\"" << endl;
+  }
 }

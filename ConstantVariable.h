@@ -48,11 +48,27 @@ public:
   {
     if (size == -1)
     {
-      str_.substring(offset).toCharArray(to,(str_.length() + 1 - offset));
+      // to account for seemingly flawed behavior in substring method
+      if (str_.length() > 0)
+      {
+        str_.substring(offset).toCharArray(to,(str_.length() + 1 - offset));
+      }
+      else
+      {
+        str_.toCharArray(to,(str_.length() + 1 - offset));
+      }
     }
     else
     {
-      str_.substring(offset).toCharArray(to,size);
+      // to account for seemingly flawed behavior in substring method
+      if (str_.length() > 0)
+      {
+        str_.substring(offset).toCharArray(to,size);
+      }
+      else
+      {
+        str_.toCharArray(to,size);
+      }
     }
     return to;
   }
