@@ -44,7 +44,6 @@ public:
   char *copy(char *to, int size = -1, int offset = 0) const;
   char operator[](int index) const;
   void print(Print &stream) const;
-  void copy(Sting&, int size = -1, int offset = 0) const;
 private:
   const String str_;
 };
