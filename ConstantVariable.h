@@ -40,46 +40,11 @@ class ConstantString
 {
 public:
   ConstantString(const char *arr) : str_(String(arr)){};
-  size_t length() const
-  {
-    return str_.length();
-  }
-  char *copy(char *to, int size = -1, int offset = 0) const
-  {
-    if (size == -1)
-    {
-      // to account for seemingly flawed behavior in substring method
-      if (str_.length() > 0)
-      {
-        str_.substring(offset).toCharArray(to,(str_.length() + 1 - offset));
-      }
-      else
-      {
-        str_.toCharArray(to,(str_.length() + 1 - offset));
-      }
-    }
-    else
-    {
-      // to account for seemingly flawed behavior in substring method
-      if (str_.length() > 0)
-      {
-        str_.substring(offset).toCharArray(to,size);
-      }
-      else
-      {
-        str_.toCharArray(to,size);
-      }
-    }
-    return to;
-  }
-  char operator[](int index) const
-  {
-    return str_.charAt(index);
-  }
-  void print(Print &stream) const
-  {
-    stream.print(str_);
-  }
+  size_t length() const;
+  char *copy(char *to, int size = -1, int offset = 0) const;
+  char operator[](int index) const;
+  void print(Print &stream) const;
+  void copy(Sting&, int size = -1, int offset = 0) const;
 private:
   const String str_;
 };

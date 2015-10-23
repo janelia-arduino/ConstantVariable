@@ -58,7 +58,7 @@ void loop()
   char little_char_array2[little_string.length()];
   little_string.copy(little_char_array2);
   Serial << little_char_array2 << endl;
-  for (int offset=0;offset<=little_string.length()+2;++offset)
+  for (int offset=0;offset<=little_string.length();++offset)
   {
     little_string.copy(little_char_array2,little_string.length()-1,offset);
     Serial << little_char_array2 << endl;
