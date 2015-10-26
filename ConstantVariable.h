@@ -39,15 +39,14 @@ ConstantString name(name##_const);
 class ConstantString
 {
 public:
-  ConstantString(const char *arr) : str_(String(arr)){};
+  ConstantString(const char *arr) : str_(arr){};
   size_t length() const;
   char *copy(char *to, int size = -1, int offset = 0) const;
   char operator[](int index) const;
   void print(Print &stream) const;
 private:
-  const String str_;
+  const char *str_;
 };
-
 #endif
 
 inline Print &operator <<(Print &stream, const ConstantString &printable)

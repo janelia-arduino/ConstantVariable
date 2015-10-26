@@ -13,41 +13,34 @@
 
 size_t ConstantString::length() const
 {
-  return str_.length();
+  return strlen(str_);
 }
 
 char *ConstantString::copy(char *to, int size, int offset) const
 {
-  if (size == -1)
+  size_t len = length();
+  // to must be >= (len + 1 - offset) bytes long, but cannot check
+  if ((size == -1) && (offset >= 0) && (offset <= (int)len))
   {
-    // to account for seemingly flawed behavior in substring method
-    if (str_.length() > 0)
-    {
-      str_.substring(offset).toCharArray(to,(str_.length() + 1 - offset));
-    }
-    else
-    {
-      str_.toCharArray(to,(str_.length() + 1 - offset));
-    }
+    memmove(to, str_ + offset, len + 1 - offset);
+    to[len - offset] = 0;
+  }
+  // to must be >= (size - offset) bytes long, but cannot check
+  else if ((size <= (int)(len + 1)) && (offset >= 0) && (offset < size))
+  {
+    memmove(to, str_ + offset, size - offset);
+    to[size - 1 - offset] = 0;
   }
   else
   {
-    // to account for seemingly flawed behavior in substring method
-    if (str_.length() > 0)
-    {
-      str_.substring(offset).toCharArray(to,size);
-    }
-    else
-    {
-      str_.toCharArray(to,size);
-    }
+    to[0] = 0;
   }
   return to;
 }
 
 char ConstantString::operator[](int index) const
 {
-  return str_.charAt(index);
+  return str_[index];
 }
 
 void ConstantString::print(Print &stream) const

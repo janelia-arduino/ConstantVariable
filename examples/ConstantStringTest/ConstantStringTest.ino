@@ -46,27 +46,30 @@ void loop()
 #endif
   Serial << endl;
   Serial << "big_string.length() = " << big_string.length() << endl;
-  char big_char_array[big_string.length()];
+  char big_char_array[big_string.length() + 1];
   big_string.copy(big_char_array);
   Serial << big_char_array << endl;
+  Serial << "big_string[6] = " << big_string[6] << endl;
 
   Serial << endl;
   Serial << "little_string.length() = " << little_string.length() << endl;
-  char little_char_array[little_string.length()];
-  little_string.copy(little_char_array,little_string.length()+1);
+  char little_char_array[little_string.length() + 1];
+  Serial << "little_char_array size = " << sizeof(little_char_array) << endl;
+  little_string.copy(little_char_array,little_string.length() + 1);
   Serial << little_char_array << endl;
-  char little_char_array2[little_string.length()];
+  char little_char_array2[little_string.length() + 1];
   little_string.copy(little_char_array2);
   Serial << little_char_array2 << endl;
-  for (int offset=0;offset<=little_string.length();++offset)
+  for (unsigned int offset=0;offset<=little_string.length();++offset)
   {
-    little_string.copy(little_char_array2,little_string.length()-1,offset);
+    little_string.copy(little_char_array2,little_string.length()+1,offset);
     Serial << little_char_array2 << endl;
   }
+  Serial << "little_string[0] = " << little_string[0] << endl;
 
   Serial << endl;
   Serial << "empty_string.length() = " << empty_string.length() << endl;
-  char empty_char_array[little_string.length()];
+  char empty_char_array[little_string.length() + 1];
   empty_string.copy(empty_char_array);
   Serial << empty_char_array << endl;
   if (strcmp(empty_char_array,"") == 0)
