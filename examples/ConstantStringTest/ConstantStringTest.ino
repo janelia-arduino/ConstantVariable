@@ -23,6 +23,7 @@ CONSTANT_STRING(big_string,
                 "gurgling face that blessed him, equine in its length, and at the light\n"
                 "untonsured hair, grained and hued like pale oak.\n");
 CONSTANT_STRING(little_string,"12345");
+CONSTANT_STRING(little_string2,"12345");
 CONSTANT_STRING(empty_string,"");
 
 void setup()
@@ -76,4 +77,50 @@ void loop()
   {
     Serial << "empty_char_array == to \"\"" << endl;
   }
+  Serial << endl;
+
+  Serial << "sizeof(little_string) = " << sizeof(little_string) << endl;
+  Serial << "sizeof(&little_string) = " << sizeof(&little_string) << endl;
+  Serial << "sizeof(big_string) = " << sizeof(big_string) << endl;
+  Serial << "sizeof(&big_string) = " << sizeof(&big_string) << endl;
+  Serial << "sizeof(empty_string) = " << sizeof(empty_string) << endl;
+  Serial << "sizeof(&empty_string) = " << sizeof(&empty_string) << endl;
+  Serial << endl;
+
+  if (little_string == little_string2)
+  {
+    Serial << "little_string == little_string2" << endl;
+  }
+  else
+  {
+    Serial << "little_string != little_string2" << endl;
+  }
+
+  if (little_string == "12345")
+  {
+    Serial << "little_string == \"12345\"" << endl;
+  }
+  else
+  {
+    Serial << "little_string != \"12345\"" << endl;
+  }
+
+  if ("12345" == little_string)
+  {
+    Serial << "\"12345\" == little_string" << endl;
+  }
+  else
+  {
+    Serial << "\"12345\" == little_string" << endl;
+  }
+
+  if (little_string == String("12345"))
+  {
+    Serial << "little_string == String(\"12345\")" << endl;
+  }
+  else
+  {
+    Serial << "little_string != String(\"12345\")" << endl;
+  }
+
 }

@@ -18,9 +18,9 @@
 
 // Use these macros to define your constant data structures
 // Example: CONSTANT_STRING(str, "Four score and seven years ago");
-#define CONSTANT_STRING(name, value) \
-static const char name##_flash[] PROGMEM = value; \
-ConstantString name(name##_flash);
+#define CONSTANT_STRING(name, value)                \
+  static const char name##_flash[] PROGMEM = value; \
+  ConstantString name(name##_flash);
 
 class ConstantString : public _FLASH_STRING
 {
@@ -32,9 +32,9 @@ public:
 
 // Use these macros to define your constant data structures
 // Example: CONSTANT_STRING(str, "Four score and seven years ago");
-#define CONSTANT_STRING(name, value) \
-static const char name##_const[] = value; \
-ConstantString name(name##_const);
+#define CONSTANT_STRING(name, value)            \
+  static const char name##_const[] = value;     \
+  ConstantString name(name##_const);
 
 class ConstantString
 {
@@ -50,6 +50,64 @@ private:
 #endif
 
 inline Print &operator <<(Print &stream, const ConstantString &printable)
-{ printable.print(stream); return stream; }
+{
+  printable.print(stream);
+  return stream;
+}
 
+inline bool operator==(const ConstantString& lhs, const ConstantString& rhs)
+{
+  char lhs_char_array[lhs.length() + 1];
+  lhs.copy(lhs_char_array);
+  char rhs_char_array[rhs.length() + 1];
+  rhs.copy(rhs_char_array);
+  return strcmp(lhs_char_array,rhs_char_array) == 0;
+}
+
+inline bool operator!=(const ConstantString& lhs, const ConstantString& rhs)
+{
+  return !(lhs == rhs);
+}
+
+inline bool operator==(const ConstantString& lhs, const char * rhs)
+{
+  char lhs_char_array[lhs.length() + 1];
+  lhs.copy(lhs_char_array);
+  return strcmp(lhs_char_array,rhs) == 0;
+}
+
+inline bool operator!=(const ConstantString& lhs, const char * rhs)
+{
+  return !(lhs == rhs);
+}
+
+inline bool operator==(const char * lhs, const ConstantString& rhs)
+{
+  return rhs == lhs;
+}
+
+inline bool operator!=(const char * lhs, const ConstantString& rhs)
+{
+  return !(lhs == rhs);
+}
+
+inline bool operator==(const ConstantString& lhs, const String& rhs)
+{
+  return lhs == rhs.c_str();
+}
+
+inline bool operator!=(const ConstantString& lhs, const String& rhs)
+{
+  return !(lhs == rhs);
+}
+
+inline bool operator==(const String& lhs, const ConstantString& rhs)
+{
+  return rhs == lhs;
+}
+
+inline bool operator!=(const String& lhs, const ConstantString& rhs)
+{
+  return !(lhs == rhs);
+}
 #endif
