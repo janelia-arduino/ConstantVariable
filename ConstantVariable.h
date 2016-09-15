@@ -25,7 +25,7 @@
 class ConstantString : public _FLASH_STRING
 {
 public:
-  ConstantString(const char PROGMEM *arr) : _FLASH_STRING(arr){};
+  ConstantString(const char *arr) : _FLASH_STRING(arr){};
 };
 
 #else
