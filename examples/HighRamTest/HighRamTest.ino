@@ -1,9 +1,9 @@
-#include "Arduino.h"
-#include "Streaming.h"
-#include "MemoryFree.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <MemoryFree.h>
 
 
-const int BAUDRATE = 9600;
+const long BAUDRATE = 115200;
 const char* big_string =
   "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of\n"
   "lather on which a mirror and a razor lay crossed. A yellow dressinggown,\n"

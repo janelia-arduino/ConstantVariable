@@ -7,14 +7,10 @@
 // ----------------------------------------------------------------------------
 #ifndef CONSTANT_VARIABLE_H
 #define CONSTANT_VARIABLE_H
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
+#include <Arduino.h>
 
 #ifdef __AVR__
-#include "Flash.h"
+#include <Flash.h>
 
 // Use these macros to define your constant data structures
 // Example: CONSTANT_STRING(str, "Four score and seven years ago");
