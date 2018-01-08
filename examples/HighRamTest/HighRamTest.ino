@@ -3,7 +3,7 @@
 #include <MemoryFree.h>
 
 
-const long BAUDRATE = 115200;
+const long BAUD = 115200;
 const char* big_string =
   "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of\n"
   "lather on which a mirror and a razor lay crossed. A yellow dressinggown,\n"
@@ -23,7 +23,7 @@ const char* big_string =
 
 void setup()
 {
-  Serial.begin(BAUDRATE);
+  Serial.begin(BAUD);
   Serial.flush();
   delay(1000);
 
