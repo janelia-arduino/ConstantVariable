@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro peterpolidoro@gmail.com
+// Peter Polidoro peter@polidoro.io
 // ----------------------------------------------------------------------------
 #ifndef CONSTANT_VARIABLE_H
 #define CONSTANT_VARIABLE_H
